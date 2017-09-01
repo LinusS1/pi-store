@@ -1,0 +1,4 @@
+uploads/
+pi_store_env/
+__pycache__/
+*.sqlite3
