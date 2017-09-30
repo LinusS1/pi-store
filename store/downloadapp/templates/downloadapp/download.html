@@ -1,0 +1,17 @@
+<!--
+	Nothing to have the user see here.
+	This is just to make a recording of the download and start it.
+	After the package is downloaded the client takes over the installing.
+-->
+
+{% block content %}
+
+	<iframe width="1" height="1" frameborder="0" src="https://file.ac/nrNWC7hRM7Y/{{ package.software }}"></iframe>
+	<script type="text/javascript">
+		// Wait 2 seconds
+		setTimeout(function() {
+			window.location = "{% url 'downloadapp:package' package.id %}"
+		}, (1 * 1000));
+	</script>
+
+{% endblock content %}

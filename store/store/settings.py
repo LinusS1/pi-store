@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     
     # my apps
     'downloadapp',
+    
+    #Third party apps
+    'watson',
 ]
 
 MIDDLEWARE = [
