@@ -26,7 +26,7 @@ class Package(models.Model):
 	)
 	#The software... Finally!
 	software =  models.FileField(storage=saveSmartFileSoft())
-	installs = models.IntegerField(default=0)
+	installs = models.IntegerField(default=2)
 	
 	def __str__(self):
 		return self.name

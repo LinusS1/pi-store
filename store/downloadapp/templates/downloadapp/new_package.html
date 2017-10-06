@@ -1,0 +1,10 @@
+{% extends "downloadapp/base.html" %}
+
+{% block content %}
+	<p>Add a new package:</p>
+	<form action="{% url 'downloadapp:new' %}" method='post' enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form }}
+		<button name='submit'>Continue</button>
+	</form>
+{% endblock content %}

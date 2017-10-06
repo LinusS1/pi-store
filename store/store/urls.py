@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #main page
     url(r'', include('downloadapp.urls')),
 	]
