@@ -1,0 +1,2 @@
+# pi-store
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c3f5a7503d3f4bf58c2a0b78591f4a59)](https://www.codacy.com/app/linus33/pi-store?utm_source=github.com&utm_medium=referral&utm_content=LinusS1/pi-store&utm_campaign=badger)
