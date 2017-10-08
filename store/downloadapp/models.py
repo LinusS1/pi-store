@@ -1,5 +1,5 @@
 from django.db import models
-from .storage import saveSmartFileDisp, saveSmartFileSoft, saveSmartFileShot
+from .storage import saveSmartFileSoft, saveSmartFileShot
 
 
 class Package(models.Model):
@@ -8,7 +8,6 @@ class Package(models.Model):
 	description = models.TextField()
 	date_changed = models.DateTimeField(auto_now_add=True)# when the app was last changed/added.
 	# display image
-	display = models.ImageField(max_length=200, storage=saveSmartFileDisp())
 	shot = models.ImageField(max_length=200, storage=saveSmartFileShot())
 	#published?
 	isPublished = models.BooleanField(default=False)

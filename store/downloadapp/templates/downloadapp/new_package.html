@@ -4,7 +4,7 @@
 	<p>Add a new package:</p>
 	<form action="{% url 'downloadapp:new' %}" method='post' enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ form }}
+		{{ form.as_p }}
 		<button name='submit'>Continue</button>
 	</form>
 {% endblock content %}

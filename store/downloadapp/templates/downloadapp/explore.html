@@ -10,9 +10,9 @@
 		{% for package in packages %}
 			<li>
 				<div>
-					<!--Nice thing to make the images load.-->
-					<img src="https://file.ac/fgazR9q1Y7M/{{ package.display }}" alt={{ package }}>
 					<h4>{{ package }}</h4>
+					<!--Nice thing to make the images load.-->
+					<img src="https://file.ac/EWLnE13zcKA/{{ package.shot }}" alt={{ package }}>
 					<p>{{ package.description }}</p>
 					<p>Installed {{ package.installs }} times</p>
 					<a href="{% url 'downloadapp:package' package.id %}">Go to product page</a>
