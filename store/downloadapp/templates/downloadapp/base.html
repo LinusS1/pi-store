@@ -4,3 +4,13 @@
 </h2>
 
 {% block content %}{% endblock content %}
+
+<footer>
+	<p>
+	{% if user.is_authenticated %}
+		Status: authenticated as {{ user.username }} - <a href="{% url 'accounts:logout' %}">log out</a>
+	{% else %}
+		Status: Not authenticated - <a href="{% url 'accounts:login' %}">log in</a>
+	{% endif %}
+	</p>
+</footer>

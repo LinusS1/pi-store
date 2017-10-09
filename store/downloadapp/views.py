@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import F
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from .models import Package
 from .forms import PackageForm
@@ -20,6 +21,7 @@ def package(request, package_id):
 	context = {'package':package}
 	return render(request, 'downloadapp/package.html', context)
 
+@login_required
 def download(request, package_id):
 	package = get_object_or_404(Package, pk=package_id)
 	#Add on to database
@@ -27,6 +29,7 @@ def download(request, package_id):
 	context = {"package":package}
 	return render(request, 'downloadapp/download.html', context)
 ########################### DEVELOPER
+@login_required
 def new(request):
 	if request.method == 'POST':
 		form = PackageForm(request.POST, request.FILES)
