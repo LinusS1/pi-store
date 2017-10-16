@@ -42,8 +42,7 @@ INSTALLED_APPS = [
 	'accounts',
 	
 	#Third party apps
-	#'watson',
-	'captcha',
+	'captcha',# For form that adds packages
 	'social_django',
 	
 ]
@@ -144,7 +143,7 @@ LOGIN_REDIRECT_URL = '/explore'
 SOCIAL_AUTH_GITHUB_KEY = 'f072839128515a095c0c'
 SOCIAL_AUTH_GITHUB_SECRET = 'f5ce3f3ecf250ddc66626c37fa855281214f7cac'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/explore'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # Static files (CSS, JavaScript, Images)

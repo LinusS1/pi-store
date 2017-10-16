@@ -10,6 +10,7 @@
 		<p>{{ package.description|linebreaks }}</p>
 	</article>
 	<p>Has been installed {{ package.installs }} times.</p>
+	<p>Made by {{ package.owner }}</p>
 	<a href="{% url 'downloadapp:download' package.id %}">Download {{ package }}</a>
 {% endblock content %}
 

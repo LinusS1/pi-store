@@ -1,6 +1,6 @@
 from django.db import models
 from .storage import saveSmartFileSoft, saveSmartFileShot
-
+from django.contrib.auth.models import User
 
 class Package(models.Model):
 	"""The downloadable package."""
@@ -26,6 +26,7 @@ class Package(models.Model):
 	#The software... Finally!
 	software =  models.FileField(storage=saveSmartFileSoft())
 	installs = models.IntegerField(default=2)
+	owner = models.ForeignKey(User, null=True, blank=False)
 	
 	def __str__(self):
 		return self.name
