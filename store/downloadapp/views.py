@@ -34,7 +34,9 @@ def new(request):
 	if request.method == 'POST':
 		form = PackageForm(request.POST, request.FILES)
 		if form.is_valid():
-			form.save()
+			new_package = form.save(commit=False)
+			new_package.owner = request.user
+			new_package.save()
 			return HttpResponseRedirect('/explore')
 
 	else:
