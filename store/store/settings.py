@@ -41,8 +41,9 @@ INSTALLED_APPS = [
 	'downloadapp',
 	'accounts',
 	
-	#Third party apps
+	#~ #Third party apps
 	'captcha',# For form that adds packages
+	'markdownx',#For description markdown
 	'social_django',
 	
 ]
@@ -150,3 +151,4 @@ SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 	"static/"

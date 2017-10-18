@@ -1,11 +1,13 @@
 from django.db import models
 from .storage import saveSmartFileSoft, saveSmartFileShot
 from django.contrib.auth.models import User
+from markdownx.models import MarkdownxField
 
 class Package(models.Model):
 	"""The downloadable package."""
 	name = models.CharField(max_length=200)# Name of the app
-	description = models.TextField()
+	description = MarkdownxField()
+	simple_description = models.CharField(max_length=300, null=True, blank=False)
 	date_changed = models.DateTimeField(auto_now_add=True)# when the app was last changed/added.
 	# display image
 	shot = models.ImageField(max_length=200, storage=saveSmartFileShot())

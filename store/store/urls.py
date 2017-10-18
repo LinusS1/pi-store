@@ -21,7 +21,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #main page
     url(r'', include('downloadapp.urls')),
-    #accounts
+    #markdownx
+    url(r'^markdownx/', include('markdownx.urls')),
+    #~ #accounts
     url(r'^accounts/', include('accounts.urls')),
     
     url(r'^oauth/', include('social_django.urls', namespace='social')),
