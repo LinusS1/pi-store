@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'', include('downloadapp.urls')),
     #markdownx
     url(r'^markdownx/', include('markdownx.urls')),
-    #~ #accounts
+    #accounts
     url(r'^accounts/', include('accounts.urls')),
     
     url(r'^oauth/', include('social_django.urls', namespace='social')),
