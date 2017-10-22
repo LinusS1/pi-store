@@ -7,7 +7,7 @@
 	<img src="https://file.ac/EWLnE13zcKA/{{ package.shot }}" alt={{ package }}>
 	<br>
 	<article>
-		<p>{{ package.description|linebreaks }}</p>
+		<p>{{ package.formatted_markdown|safe }}</p>
 	</article>
 	<p>Has been installed {{ package.installs }} times.</p>
 	<p>Made by {{ package.owner }}</p>

@@ -2,6 +2,7 @@ from django.db import models
 from .storage import saveSmartFileSoft, saveSmartFileShot
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 class Package(models.Model):
 	"""The downloadable package."""
@@ -29,6 +30,10 @@ class Package(models.Model):
 	software =  models.FileField(storage=saveSmartFileSoft())
 	installs = models.IntegerField(default=2)
 	owner = models.ForeignKey(User, null=True, blank=False)
+	
+	@property
+	def formatted_markdown(self):
+		return markdownify(self.description)
 	
 	def __str__(self):
 		return self.name

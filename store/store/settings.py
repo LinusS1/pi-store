@@ -147,6 +147,10 @@ SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/explore'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
+MARKDOWNX_UPLOAD_MAX_SIZE = 0
+MARKDOWNX_IMAGE_MAX_SIZE = { 'size': (0, 0), 'quality': 0 }
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
