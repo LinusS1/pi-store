@@ -26,6 +26,7 @@ class saveSmartFileSoft(Storage):
 	def url(self, name):
 		#parse url
 		return "https://file.ac/nrNWC7hRM7Y/"+name
+
 		
 @deconstructible
 class saveSmartFileShot(Storage):

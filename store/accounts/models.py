@@ -6,7 +6,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
 	"""Define which packages user has installed"""
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	packages_installs = models.CharField(max_length=300, null=True, blank=True, default=0)
+	packages_installs = models.CharField(max_length=300, null=True, blank=True, default="")
 	
 	def __str__(self):
 		return self.user.username
