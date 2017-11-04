@@ -11,6 +11,10 @@
 	</article>
 	<p>Has been installed {{ package.installs }} times.</p>
 	<p>Made by {{ package.owner }}</p>
-	<a href="{% url 'downloadapp:download' package.id %}">Download {{ package }}</a>
+	{% if has_package %}
+		<p>You have this</p>
+	{% else %}
+		<a href="{% url 'downloadapp:download' package.id %}">Download {{ package }}</a>
+	{% endif %}
 {% endblock content %}
 

@@ -21,8 +21,10 @@ def package(request, package_id):
 	"""Specific package"""
 	package = get_object_or_404(Package, pk=package_id)
 	user = User.objects.get(id=request.user.id)
-	if str(package.id) in list(user.profile.packages_installs):
+	if user.profile.packages_installs != None and str(package.id) in list(user.profile.packages_installs.split(",")):
 		has_package = True
+	else:
+		has_package = False
 	context = {'package':package, 'has_package':has_package}
 	return render(request, 'downloadapp/package.html', context)
 
