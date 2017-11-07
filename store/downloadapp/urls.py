@@ -12,6 +12,10 @@ urlpatterns = [
 	url(r'^package/(?P<package_id>\d+)/$', views.package, name='package'),
 	#Download package
 	url(r'^package/download/(?P<package_id>\d+)/$', views.download, name='download'),
+	#Manage
+	url(r'^manage$', views.manage, name='manage'),
+	#Download uninstall file
+	url(r'^manage/uninstall/(?P<package_id>\d+)/$', views.uninstall, name='uninstall'),
 	##Developer
 	#New package
 	url(r'^dev/packages/new$', views.new, name='new'),

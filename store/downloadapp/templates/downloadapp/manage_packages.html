@@ -1,0 +1,22 @@
+{% extends "downloadapp/base.html" %}
+
+{% block content %}
+	<h3>Manage</h3>
+	<h4>Your packages:</h4>
+	<ul>
+		{% for package in packages %}
+			<li>
+				<div>
+					<h4>{{ package }}</h4>
+					<!--Nice thing to make the images load.-->
+					<img src="https://file.ac/EWLnE13zcKA/{{ package.shot }}" alt={{ package }}>
+					<p>{{ package.simple_description }}</p>
+					<a href="{% url 'downloadapp:uninstall' package.id %}">Uninstall</a>
+					
+				</div>
+			</li>
+		{% empty %}
+			<p>You haven't downloaded anything yet! <a href="{% url 'downloadapp:explore' %}"</a>Explore to get packages.</p>
+		{% endfor %}
+	</ul>
+{% endblock content %}

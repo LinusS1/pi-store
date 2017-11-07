@@ -1,0 +1,9 @@
+{% block content %}
+	<script type="text/javascript">
+		// Wait 2 seconds
+		setTimeout(function() {
+			window.location = "{% url 'downloadapp:manage' %}"
+		}, (1 * 1000));
+	</script>
+
+{% endblock content %}
