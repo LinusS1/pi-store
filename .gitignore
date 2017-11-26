@@ -3,4 +3,4 @@ pi_store_env/
 __pycache__/
 *.sqlite3
 static/
-
+.env
