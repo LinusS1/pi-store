@@ -1,3 +1,5 @@
+{% load socialaccount %}
+{% load account %}
 <h2>
 	<a href="{% url 'downloadapp:index' %}">Pi Store</a> - 
 	<a href="{% url 'downloadapp:explore' %}">Explore!</a> - 
@@ -10,12 +12,12 @@
 	<p>
 	{% if user.is_authenticated %}
 		{% if user.is_staff %}
-			Status: authenticated as {{ user.username }} - <a href="/admin">Go to staff portal</a> - <a href="{% url 'accounts:logout' %}">log out</a>
+			Status: authenticated as {{ user.username }} - <a href="/admin">Go to staff portal</a> - <a href="{% url 'account_logout' %}">log out</a>
 		{% else %}
-			Status: authenticated as {{ user.username }} - <a href="{% url 'accounts:logout' %}">log out</a>
+			Status: authenticated as {{ user.username }} - <a href="{% url 'account_logout' %}">log out</a>
 		{% endif %}
 	{% else %}
-		Status: Not authenticated - <a href="{% url 'accounts:login' %}">log in</a>
+		Status: Not authenticated - <a href="{% url 'account_login' %}">log in</a>
 	{% endif %}
 	</p>
 </footer>

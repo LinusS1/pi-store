@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 	'django.contrib.admin',
 	'django.contrib.auth',
+	'django.contrib.sites',
 	'django.contrib.contenttypes',
 	'django.contrib.sessions',
 	'django.contrib.messages',
@@ -44,8 +46,11 @@ INSTALLED_APPS = [
 	#~ #Third party apps
 	'captcha',# For form that adds packages
 	'markdownx',#For description markdown
-	'social_django',
-	
+	#Allauth
+	'allauth',
+	'allauth.account',
+	'allauth.socialaccount',
+	'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -56,8 +61,6 @@ MIDDLEWARE = [
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	#Social
-	'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'store.urls'
@@ -73,9 +76,6 @@ TEMPLATES = [
 				'django.template.context_processors.request',
 				'django.contrib.auth.context_processors.auth',
 				'django.contrib.messages.context_processors.messages',
-				#Social
-				'social_django.context_processors.backends',
-				'social_django.context_processors.login_redirect',
 			],
 		},
 	},
@@ -132,24 +132,43 @@ NOCAPTCHA = True
 
 #My settings
 AUTHENTICATION_BACKENDS = (
-	'social_core.backends.github.GithubOAuth2',
-
 	'django.contrib.auth.backends.ModelBackend',
+	'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+##Auth
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/accounts/logout/'
 LOGIN_REDIRECT_URL = '/explore'
-
-SOCIAL_AUTH_GITHUB_KEY = 'f072839128515a095c0c'
-SOCIAL_AUTH_GITHUB_SECRET = 'f5ce3f3ecf250ddc66626c37fa855281214f7cac'
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/explore'
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+#email
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_FROM=config('MAIL_FROM')
+EMAIL_SERVER=config('MAIL_SERVER')
+EMAIL_USER=config('MAIL_USER')
+EMAIL_PASSWORD=config('MAIL_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+#Allauth
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 3
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 3
+SOCIALACCOUNT_PROVIDERS = {
+	'github': {
+		'SCOPE': [
+			'user',
+		],
+	}
+}
 
 MARKDOWNX_UPLOAD_MAX_SIZE = 0
 MARKDOWNX_IMAGE_MAX_SIZE = { 'size': (0, 0), 'quality': 0 }
-
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
