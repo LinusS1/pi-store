@@ -5,6 +5,13 @@
 	<a href="{% url 'downloadapp:explore' %}">Explore!</a> - 
 	<a href="{% url 'downloadapp:manage' %}">Manage</a> - 
 </h2>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</ul>
+{% endif %}
 
 {% block content %}{% endblock content %}
 
