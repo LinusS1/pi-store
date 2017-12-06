@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 	# my apps
 	'downloadapp',
 	'accounts',
+	'dev',
 	
 	#~ #Third party apps
 	'captcha',# For form that adds packages

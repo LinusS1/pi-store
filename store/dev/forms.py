@@ -1,6 +1,6 @@
 from django import forms
 from captcha.fields import ReCaptchaField
-from .models import Package
+from downloadapp.models import Package
 
 class PackageForm(forms.ModelForm):
 	

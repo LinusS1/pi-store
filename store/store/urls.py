@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #main page
     url(r'', include('downloadapp.urls')),
+    #Developer
+    url(r'^dev/', include('dev.urls')),
     #markdownx
     url(r'^markdownx/', include('markdownx.urls')),
     #accounts (all-auth) - accounts app doesn't need url

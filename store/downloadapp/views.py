@@ -5,13 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.contrib import messages##
 
 from wsgiref.util import FileWrapper
 import io as StringIO
 
 from .models import Package
-from .forms import PackageForm
 
 
 def index(request):
@@ -84,18 +82,3 @@ def uninstall(request, package_id):
 	response = HttpResponse(tFile.getvalue(), content_type='application/plain')
 	response['Content-Disposition'] = 'attachment; filename=uninstall.txt'
 	return response
-########################### DEVELOPER
-@login_required
-def new(request):
-	if request.method == 'POST':
-		form = PackageForm(request.POST, request.FILES)
-		if form.is_valid():
-			new_package = form.save(commit=False)
-			new_package.owner = request.user
-			new_package.save()
-			return HttpResponseRedirect('/explore')
-
-	else:
-		form = PackageForm()
-
-	return render(request, 'downloadapp/new_package.html', {'form': form})
