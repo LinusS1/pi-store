@@ -1,13 +1,14 @@
 from django.core.files.storage import Storage
 from django.utils.deconstruct import deconstructible
 from smartfile import BasicClient
+from decouple import config
 		
 @deconstructible
 class saveSmartFileSoft(Storage):
 	"""Save things using smart file using django"""
 	
 	def __init__(self):
-		self.api = BasicClient()
+		self.api = BasicClient(config('SMARTFILE_API_KEY'),config('SMARTFILE_API_PASSWORD'))
 		testA = self.api.get('/ping')
 		
 	def _open(self, name, mode='rb'):
@@ -33,7 +34,7 @@ class saveSmartFileShot(Storage):
 	"""Save things using smart file using django"""
 	
 	def __init__(self):
-		self.api = BasicClient()
+		self.api = BasicClient(config('SMARTFILE_API_KEY'),config('SMARTFILE_API_PASSWORD'))
 		testA = self.api.get('/ping')
 		
 	def _open(self, name, mode='rb'):
