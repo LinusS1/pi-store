@@ -17,7 +17,7 @@ def index(request):
 
 def explore(request):
 	"""Main way to find packages"""
-	packages = Package.objects.order_by("date_changed").filter(isPublished = True)
+	packages = Package.objects.order_by("date_changed").filter(stage='LIV')
 	context = {'packages':packages}
 	return render(request, 'downloadapp/explore.html', context)
 

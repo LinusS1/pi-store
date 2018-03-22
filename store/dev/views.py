@@ -1,8 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+from downloadapp.models import Package
+
 from .forms import PackageForm
+
+@login_required	
+def dev_index(request):
+	packages = Package.objects.order_by("date_changed").filter(owner=request.user)
+	context = {'packages':packages}
+	return render(request, 'dev/dev_index.html', context)
 
 @login_required
 def new_package(request):
@@ -18,3 +27,9 @@ def new_package(request):
 		form = PackageForm()
 
 	return render(request, 'dev/new_package.html', {'form': form})
+	
+def documentation_r(request):
+	return render(request, 'dev/docs/rules.html')
+
+def documentation_t(request):
+	return render(request, 'dev/docs/tools.html')

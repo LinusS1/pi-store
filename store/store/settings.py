@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 	'accounts',
 	'dev',
 	
-	#~ #Third party apps
+	#Third party apps
 	'captcha',# For form that adds packages
 	'markdownx',#For description markdown
 	#Allauth
@@ -169,3 +169,4 @@ SITE_ID = 1
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 	"static/"
+

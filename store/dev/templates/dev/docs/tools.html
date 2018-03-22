@@ -1,0 +1,46 @@
+{% extends "downloadapp/base.html" %}
+
+{% block content %}
+	<h3>Tools:</h3>
+	<p><u>Package Skeleton:</u></p>
+	<p style="color: green">This is a tool to help with the installation/uninstallation scripts. You do not need to use them, but they may be necessary for packaging you application.</p>
+	<p><a href="https://file.ac/8SgRox6YSno/app.zip"><strong>Download Now</strong></a></p>
+	<p>Note: Download this through a web browser. Don't download this in the client.</p>
+	<p>The zip file contains the structure of how the download client expects the application to be packaged. If the download client can&rsquo;t install the package, your package will be rejected.</p>
+	<p>The tool you downloaded is a zip file that contains the following:</p>
+	<article>
+		app*
+		<br>
+		--name*
+		<br>
+		--icon.png*
+		<br>
+		--INSTALL.sh
+		<br>
+		--UNINSTALL.sh
+		<br>
+		--start.sh*
+		<br>
+		--program
+		<br>
+		----program files go here
+	</article>
+	<p>*Must be edited</p>
+	<p>A deeper look into the files:</p>
+	<article>
+		app: this is a simple name of your application. This must be unique and edited. Directory.
+		<br>
+		name: the exact name of the app as it appears on the store
+		<br>
+		icon.png: The icon of the application. The name of the file must stay the same but there must be a picture.
+		<br>
+		INSTALL.sh: Leave this alone unless you need to add extra dependencies.
+		<br>
+		UNINSTALL.sh: Uninstall the application. Use this to delete any files your application created outside its application directory.
+		<br>
+		start.sh: Change this to start the program.
+		<br>
+		program: A directory where you program’s files live. This also includes the data that your application creates. The start.sh should call a script in this directory.
+	</article>
+	<p>More tools to be added in the future....</p>
+{% endblock content %}

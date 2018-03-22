@@ -1,0 +1,48 @@
+{% extends "downloadapp/base.html" %}
+
+{% block content %}
+	<h2>Developer Portal:</h2>
+	<div id="col" style="column-count: 3">
+		<h4>Documentation:</h4>
+		<p>Learn Rules and Tools for submiting your package.</p>
+		<a href="{% url 'dev:docs_r' %}">Rules</a> | <a href="{% url 'dev:docs_t' %}">Tools</a>
+		
+		<h4>Manage your packages:</h4>
+		<style>
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			td, th {
+				border: 1px solid #dddddd;
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(even) {
+				background-color: #dddddd;
+			}
+		</style>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Stage</th>
+				<th>Message (If any)</th>
+			 </tr>
+			{% for package in packages %}
+				<tr>
+					<td>{{ package.name }}</td>
+					<td>{{ package.get_stage_display }}</td>
+					<td>{{ package.message }}</td>
+				</tr>
+			{% empty %}
+				<p>Go make a package!</p>
+			{% endfor %}
+		</table>
+		
+		<h4>Create a package!</h4>
+		New package -->
+	</div>
+{% endblock content %}

@@ -12,8 +12,6 @@ class Package(models.Model):
 	date_changed = models.DateTimeField(auto_now_add=True)# when the app was last changed/added.
 	# display image
 	shot = models.ImageField(max_length=200, storage=saveSmartFileShot())
-	#published?
-	isPublished = models.BooleanField(default=False)
 	#catagory
 	CATAGORY_CHOICES = (
 		('GAM', 'Games'),
@@ -30,6 +28,17 @@ class Package(models.Model):
 	software =  models.FileField(storage=saveSmartFileSoft())
 	installs = models.IntegerField(default=2)
 	owner = models.ForeignKey(User, null=True, blank=False)
+	#What stage the package is in
+	STAGE_CHOICES = (
+		('LOK', 'Certification'),
+		('LIV', 'Live!'),
+	)
+	stage = models.CharField(
+		max_length=3,
+		choices=STAGE_CHOICES,
+		default='LOK',
+	)
+	message = models.TextField(null=True, blank=False)
 	
 	@property
 	def formatted_markdown(self):
