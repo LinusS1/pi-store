@@ -2,11 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from downloadapp.models import Package
 
 class Profile(models.Model):
 	"""Define which packages user has installed"""
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	packages_installs = models.CharField(max_length=300, null=True, blank=True, default="")
+	installed_packages = models.ManyToManyField(Package)
 	
 	def __str__(self):
 		return self.user.username
