@@ -1,0 +1,41 @@
+{% extends "downloadapp/base.html" %}
+
+{% block content %}
+	<h3>Package quick check:</h3>
+	
+	<p>Please read to self check your package.</p>
+	<br>
+	<input type="checkbox">The package is suitable for all ages.</input>
+	<br>
+	<input type="checkbox">The package does not infringe intellectual rights.</input>
+	<br>
+	<input type="checkbox">The package does not promote lies.</input>
+	<br>
+	<input type="checkbox">The package does not contain or install malware, badware or spyware etc...</input>
+	<br>
+	<input type="checkbox">Anything sent through the internet must use <b>HTTPS</b></input>
+	<br>
+	<input type="checkbox">The package or the web service the information is sent to must not misuse it.</input>
+	<br>
+	<input type="checkbox">The Ads (if any) don't track the users</input>
+	<br>
+	<input type="checkbox">The Ads (if any) fit in and are not video ads.</input>
+	<br>
+	<input type="checkbox">The package meets the other requirements set out by the <a href="{% url 'dev:docs_t' %}">rules</a></input>
+	<br>
+	<input type="checkbox">The package is using the directory layout shown in the Package Skeleton.</input>
+	<br>
+	<input type="checkbox">You edited the files that needed to be edited in the Package Skeleton.</input>
+	<br>
+	<input type="checkbox">The application is fast.</input>
+	<br>
+	<input type="checkbox">The application is easy to use.</input>
+	<br>
+	<input type="checkbox">The application looks good.</input>
+	<br>
+	If the application is in the apt repositories DO NOT upload the whole package to the Pi Store. Instead, in your INSTALL.sh file have apt install it. Be sure to uninstall it in UNINSTALL.sh</input>
+	<br>
+	<br>
+	<p>If the package meets the self check, click upload package.</p>
+	<a href="{% url 'dev:new_package' %}">Upload Package</a>
+{% endblock content %}

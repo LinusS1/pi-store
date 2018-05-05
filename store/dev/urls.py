@@ -6,8 +6,11 @@ app_name = 'dev'
 urlpatterns = [
 	#Main developer page
 	url(r'^$', views.dev_index, name='dev_index'),
-	#New package
-	url(r'^new/$', views.new_package, name='new_package'),
+	#New package-assistant
+	#Quick Check
+	url(r'^quick_check/$', views.quick_check, name='quick_check'),
+	#New Package
+	url(r'^new_package/$', views.new_package, name='new_package'),
 	#Documentation
 	url(r'^dev/docs/rules/$', views.documentation_r, name='docs_r'),
 	url(r'^dev/docs/tools/$', views.documentation_t, name='docs_t'),

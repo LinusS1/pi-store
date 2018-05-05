@@ -12,6 +12,10 @@ def dev_index(request):
 	packages = Package.objects.order_by("date_changed").filter(owner=request.user)
 	context = {'packages':packages}
 	return render(request, 'dev/dev_index.html', context)
+	
+@login_required
+def quick_check(request):
+	return render(request, "dev/quick_check.html")
 
 @login_required
 def new_package(request):
