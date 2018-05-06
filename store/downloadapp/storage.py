@@ -16,8 +16,10 @@ class saveSmartFileSoft(Storage):
 		return Refile
 	
 	def _save(self, name, content):
-		self.api.upload(name, content)
-		self.api.move(name, '/software')
+		#Create what is getting sent
+		arg = (name, content)
+		#send the file and name off!
+		self.api.post("/path/data/software/", file=arg)
 		#create url
 		return "/software/"+name
 
@@ -42,8 +44,10 @@ class saveSmartFileShot(Storage):
 		return Refile
 	
 	def _save(self, name, content):
-		self.api.upload(name, content)
-		self.api.move(name, '/screenShot')
+		#Create what is getting sent
+		arg = (name, content)
+		#send the file and name off!
+		self.api.post("/path/data/screenShot/", file=arg)
 		#create url
 		return "/screenShot/"+name
 
