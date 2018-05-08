@@ -26,7 +26,7 @@ def package(request, package_id):
 	package = get_object_or_404(Package, pk=package_id)
 	if request.user.is_authenticated():
 		user = User.objects.get(id=request.user.id)
-		if package in user.profile.installed_packages.packages.all():
+		if user.profile.installed_packages.filter(pk=package_id).exists():
 			has_package = True
 		else:
 			has_package = False
@@ -51,15 +51,7 @@ def download(request, package_id):
 def manage(request):
 	packages_installed = []
 	user = User.objects.get(id=request.user.id)
-	#~ try:
-		#~ user_package_ids = list(user_package_ids.profile.packages_installs.split(","))
-		#~ packages_installed = []
-		#~ for n in user_package_ids:
-			#~ if n != '':
-				#~ packages_installed.append(Package.objects.get(id=n))
-	#~ except:
-		#~ pass
-		
+
 	#get all packages installed
 	packages_installed = user.profile.installed_packages.all()
 	#list all packages installed
@@ -73,7 +65,7 @@ def uninstall(request, package_id):
 	Package.objects.filter(id=package_id).update(installs=F('installs')-1)
 	#remove from profile
 	user = User.objects.get(id=request.user.id)
-	user.profile.packages_installs.remove(package)
+	user.profile.installed_packages.remove(package)
 	user.save()
 	
 	#Get file ready

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from downloadapp.models import Package
 
@@ -25,7 +26,8 @@ def new_package(request):
 			new_package = form.save(commit=False)
 			new_package.owner = request.user
 			new_package.save()
-			return HttpResponseRedirect('/explore')
+			messages.success(request, "Your package have been submitted for certification.")
+			return HttpResponseRedirect('/dev/')
 
 	else:
 		form = PackageForm()
