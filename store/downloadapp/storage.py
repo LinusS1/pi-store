@@ -56,4 +56,4 @@ class saveSmartFileShot(Storage):
 		
 	def url(self, name):
 		#parse url
-		return "https://file.ac/EWLnE13zcKA/"+name
+		return "https://file.ac/FUt50I5XH8U/"+name
