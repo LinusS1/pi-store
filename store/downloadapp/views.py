@@ -35,6 +35,10 @@ def package(request, package_id):
 	context = {'package':package, 'has_package':has_package}
 	return render(request, 'downloadapp/package.html', context)
 
+def add_package_to_profile(user, package):
+	user.profile.installed_packages.add(package)
+	user.save()
+
 @login_required
 def download(request, package_id):
 	package = get_object_or_404(Package, pk=package_id)
@@ -42,11 +46,10 @@ def download(request, package_id):
 	Package.objects.filter(id=package_id).update(installs=F('installs')+1)
 	#Add to users package list
 	user = User.objects.get(id=request.user.id)
-	user.profile.installed_packages.add(package)
-	user.save()
+	add_package_to_profile(user, package)
 	context = {"package":package}
 	return render(request, 'downloadapp/download.html', context)
-	
+
 @login_required
 def manage(request):
 	packages_installed = []

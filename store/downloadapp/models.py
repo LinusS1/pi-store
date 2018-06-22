@@ -40,7 +40,6 @@ class Package(models.Model):
 	)
 	message = models.TextField(null=True, blank=False)
 	
-	@property
 	def formatted_markdown(self):
 		return markdownify(self.description)
 	
