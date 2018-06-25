@@ -12,6 +12,6 @@ urlpatterns = [
 	#New Package
 	url(r'^new_package/$', views.new_package, name='new_package'),
 	#Documentation
-	url(r'^dev/docs/rules/$', views.documentation_r, name='docs_r'),
-	url(r'^dev/docs/tools/$', views.documentation_t, name='docs_t'),
+	url(r'^docs/rules/$', views.documentation_r, name='docs_r'),
+	url(r'^docs/tools/$', views.documentation_t, name='docs_t'),
 	]
