@@ -55,6 +55,9 @@ INSTALLED_APPS = [
 	
 	#Testing
 	'coverage',
+	
+	#Bootstrap
+	'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -166,6 +169,11 @@ ACCOUNT_USERNAME_MIN_LENGTH = 3
 MARKDOWNX_UPLOAD_MAX_SIZE = 0
 MARKDOWNX_IMAGE_MAX_SIZE = { 'size': (0, 0), 'quality': 0 }
 SITE_ID = 1
+
+#Bootstrap3 settings (app: django-bootstrap3)
+BOOTSTRAP3 = {
+	'include_jquery':True,
+	}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

@@ -1,31 +1,72 @@
 {% load socialaccount %}
 {% load account %}
-<h2>
-	<a href="{% url 'downloadapp:index' %}">Pi Store</a> - 
-	<a href="{% url 'downloadapp:explore' %}">Explore!</a> - 
-	<a href="{% url 'downloadapp:manage' %}">Manage</a> - 
-	<a href="{% url 'dev:dev_index' %}">Upload</a>
-</h2>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% block content %}{% endblock content %}
-
-<footer>
-	<p>
-	{% if user.is_authenticated %}
-		{% if user.is_staff %}
-			Status: authenticated as {{ user.username }} - <a href="/admin">Go to staff portal</a> - <a href="{% url 'account_logout' %}">log out</a>
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Pi Store</title>
+		
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+		
+	</head>
+	
+	<body>
+		
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar"
+						aria-expanded="false" aria-controls="navbar">
+					</button>
+					<a class="navbar-brand" href="{% url 'downloadapp:index' %}">Pi Store</a>
+				</div>
+				
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="{% url 'downloadapp:explore' %}">Explore!</a></li>
+						<li><a href="{% url 'downloadapp:manage' %}">Manage</a></li>
+						<li><a href="{% url 'dev:dev_index' %}">Upload</a></li>
+					</ul>
+					
+				</div><!--/.nav-collapse-->
+			</div>
+		</nav>
+		
+		<!--Messages/notifications-->
+		
+		
+		<!--Regular page content-->
+		<div class="container">
+			
+			<div class="page-header">
+				{% block header %}{% endblock header %}
+			</div>
+			<div>
+				{% block content %}{% endblock content %}
+			</div>
+			
+		</div> <!--/container-->
+		
+	</body>
+	
+	<footer>
+		<p>
+		{% if user.is_authenticated %}
+			{% if user.is_staff %}
+				Status: authenticated as {{ user.username }} - <a href="/admin">Go to staff portal</a> - <a href="{% url 'account_logout' %}">log out</a>
+			{% else %}
+				Status: authenticated as {{ user.username }} - <a href="{% url 'account_logout' %}">log out</a>
+			{% endif %}
 		{% else %}
-			Status: authenticated as {{ user.username }} - <a href="{% url 'account_logout' %}">log out</a>
+			Status: Not authenticated - <a href="{% url 'account_login' %}">log in</a>
 		{% endif %}
-	{% else %}
-		Status: Not authenticated - <a href="{% url 'account_login' %}">log in</a>
-	{% endif %}
-	</p>
-</footer>
+		</p>
+	</footer>
