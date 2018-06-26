@@ -5,15 +5,34 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+import datetime
 
 from wsgiref.util import FileWrapper
 import io as StringIO
 
 from .models import Package
 
+def user_date_today(user):
+	now = datetime.datetime.now()
+	return (now.date() - user.date_joined.date()).days
 
 def index(request):
-	return render(request, 'downloadapp/index.html')
+	if request.user.is_authenticated():
+		user_joined = User.objects.get(id=request.user.id)
+		if user_date_today(user_joined) <= 7:
+			user_joined = True
+		else:
+			user_joined = False
+	else:
+		user_joined = True
+	
+	packages = Package.objects.order_by("date_changed").filter(stage='LIV')[:5]
+	
+	context = {'user_joined':user_joined, 'packages':packages}
+	return render(request, 'downloadapp/index.html', context)
+
+def welcome(request):
+	return render(request, 'downloadapp/welcome.html')
 
 def explore(request):
 	"""Main way to find packages"""

@@ -6,6 +6,8 @@ app_name = 'downloadapp'
 urlpatterns = [
 	#Home
 	url(r'^$', views.index, name='index'),
+	#Welcome page
+	url(r'^welcome$', views.welcome, name='welcome'),
 	#Explore
 	url(r'^explore$', views.explore, name='explore'),
 	#Specific package

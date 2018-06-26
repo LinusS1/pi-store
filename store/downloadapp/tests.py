@@ -9,8 +9,9 @@ from decouple import config
 from django.contrib.auth.models import User
 import time
 import pdb
+import datetime
 
-from .views import add_package_to_profile
+from .views import add_package_to_profile, user_date_today
 from .models import Package
 from accounts.models import Profile
 from .storage import saveSmartFileShot, saveSmartFileSoft
@@ -142,6 +143,11 @@ class ViewsTest(TestCase):
 		
 		self.assertEqual(resp.status_code, 200)
 		self.assertIn(b"Pi Store", resp.content)
+		
+	def test_user_date_today(self):
+		"""Test the user_date_today function"""
+		resp = user_date_today(self.userInstalled)
+		self.assertEqual(resp, 0)
 		
 	def test_explore_view(self):
 		"""Test the explore views"""

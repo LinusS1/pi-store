@@ -1,0 +1,47 @@
+{% extends "downloadapp/base.html" %}
+
+{% block header %}
+		<div class='jumbotron'>
+			<h2>Welcome to the Pi Store</h2>
+		</div>
+{% endblock header %}
+{% block content %}
+	<article>
+		Welcome to the Pi Store. A place to download and distribute open source software for the raspberry pi.
+		<br>
+		The new Pi Store is designed so that:
+		<br>
+		-It is easy to find new applications.
+		<br>
+		-The packages on the Pi Store CAN run on the raspberry pi.
+		<br>
+		--Have you ever downloaded an application package online to find that the application can't run
+		  on the raspberry pi? The Pi Store takes care of this by making sure the packages that are uploaded are just for the Raspberry Pi.
+		<br>
+		-It is easy to manage your applications you have downloaded.
+		<br>
+		--Easily uninstall your applications when you don't need them.
+		<br>
+		-It is very easy to upload.
+		<br>
+		--Just package your application up and send it in for certification. After it passes certification, 
+		  it goes live for everyone to see.
+		 <br>
+		 <br>
+		Walk through:
+		<br>
+		The Explore page:
+		<br>
+			This page is how you find applications. Just click on a package that is interesting and on tthe package page, click download. The download
+			starts immediately.
+		<br>
+		The Manage page:
+		<br>
+			This page is how you uninstall applications. Just click Uninstall. Be careful though, you can't undo it!
+		<br>
+		The Upload page:
+		<br>
+			This brings you to the developer portal for the Pi Store! Read through the tools and package your application up using the Packag Skeleton tool
+			then, send it to us for certification.
+	</article>
+{% endblock content %}
