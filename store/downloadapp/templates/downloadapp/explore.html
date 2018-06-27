@@ -1,26 +1,25 @@
 {% extends "downloadapp/base.html" %}
 
-{% block content %}
+{% block header %}
+	<h3>Explore:</h3> <small>Find packages</small>
+{% endblock header %}
 
-	
-	<h3>Explore!</h3>
-	<p>This will be the main way you will find packages.</p>
+{% block content %}
 	<h4>Newest packages:</h4>
-	<ul>
-		{% for package in packages %}
-			<li>
-				<div>
-					<h4>{{ package }}</h4>
-					<!--Nice thing to make the images load.-->
-					<img src="https://file.ac/FUt50I5XH8U/{{ package.shot }}" alt={{ package }}>
+	{% for package in packages %}
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="https://file.ac/FUt50I5XH8U/{{ package.shot }}" alt="{{ package.name }}">
+					<div class="caption">
+					<h3>{{ package.name }}</h3>
 					<p>{{ package.simple_description }}</p>
-					<p>Installed {{ package.installs }} times</p>
-					<a href="{% url 'downloadapp:package' package.id %}">Go to product page</a>
-					
+					<p><a href="{% url 'downloadapp:package' package.id %}" class="btn btn-primary" role="button">Package Page</a> 
 				</div>
-			</li>
-		{% empty %}
-			<p>There was an error loading packages.</p>
-		{% endfor %}
-	</ul>
+			</div>
+		</div>
+	{% empty %}
+		<p>There was an error loading packages.</p>
+	{% endfor %}
 {% endblock content %}
+

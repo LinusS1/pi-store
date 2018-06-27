@@ -41,6 +41,15 @@
 		</nav>
 		
 		<!--Messages/notifications-->
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<div class="alert alert-warning" role="alert">
+				<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+			</div>
+			{% endfor %}
+		</ul>
+		{% endif %}
 		
 		
 		<!--Regular page content-->
@@ -56,17 +65,20 @@
 		</div> <!--/container-->
 		
 	</body>
-	
+	<br>
 	<footer>
-		<p>
-		{% if user.is_authenticated %}
-			{% if user.is_staff %}
-				Status: authenticated as {{ user.username }} - <a href="/admin">Go to staff portal</a> - <a href="{% url 'account_logout' %}">log out</a>
-			{% else %}
-				Status: authenticated as {{ user.username }} - <a href="{% url 'account_logout' %}">log out</a>
-			{% endif %}
-		{% else %}
-			Status: Not authenticated - <a href="{% url 'account_login' %}">log in</a>
-		{% endif %}
-		</p>
+		<nav class="navbar navbar-default navbar-static-bottom">
+			<div class="container">
+				{% if user.is_authenticated %}
+					{% if user.is_staff %}
+						Status: authenticated as {{ user.username }} - <a href="/admin">Go to staff portal</a> - <a href="{% url 'account_logout' %}">log out</a>
+					{% else %}
+						Status: authenticated as {{ user.username }} - <a href="{% url 'account_logout' %}">log out</a>
+					{% endif %}
+				{% else %}
+					Status: Not authenticated - <a href="{% url 'account_login' %}">log in</a> - <a href="{% url 'account_signup' %}">Create an account</a>
+				{% endif %}
+			</div>
+		</nav>
 	</footer>
+

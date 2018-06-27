@@ -1,20 +1,22 @@
 {% extends "downloadapp/base.html" %}
 
-{% block content %}
+{% block header %}
+	<h3>{{ package }}</h3>
+	<small>Made by {{ package.owner }}</small>
+{% endblock header %}
 
-	<h4>{{ package }}</h4>
-	
+{% block content %}
 	<img src="https://file.ac/FUt50I5XH8U/{{ package.shot }}" alt={{ package }}>
 	<br>
-	<article>
-		<p>{{ package.formatted_markdown|safe }}</p>
-	</article>
+	<div class="well well-sm">
+		<article>
+			<p>{{ package.formatted_markdown|safe }}</p>
+		</article>
+	</div>
 	<p>Has been installed {{ package.installs }} times.</p>
-	<p>Made by {{ package.owner }}</p>
 	{% if has_package %}
-		<a href="{% url 'downloadapp:manage' %}">Manage your packages</a>
+		<a href="{% url 'downloadapp:manage' %}" class="btn btn-primary" role="button">Manage your packages</a>
 	{% else %}
-		<a href="{% url 'downloadapp:download' package.id %}">Download {{ package }}</a>
+		<a href="{% url 'downloadapp:download' package.id %}" class="btn btn-primary" role="button">Download {{ package }}</a>
 	{% endif %}
 {% endblock content %}
-

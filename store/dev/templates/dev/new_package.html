@@ -2,6 +2,9 @@
 
 {% block content %}
 	<h3>Add a new package:</h3>
+	<p>A few notes:</p>
+	<li>The screen shot must be <b>400x208</b></li>
+	<li>Please remember that if there is an apt package that Raspberry Pi users can download, just have an install script that installs the apt packaage.</li>
 	<form action="{% url 'dev:new_package' %}" method='post' enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form.as_p }}

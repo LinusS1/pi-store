@@ -16,7 +16,7 @@ class Package(models.Model):
 	CATAGORY_CHOICES = (
 		('GAM', 'Games'),
 		('APP', 'Apps'),
-		('DEV', 'Devloper tools'),
+		('DEV', 'Developer tools'),
 		('MED', 'Media'),
 	)
 	catagory = models.CharField(
