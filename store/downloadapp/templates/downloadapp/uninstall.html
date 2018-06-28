@@ -2,7 +2,7 @@
 	<script type="text/javascript">
 		// Wait 2 seconds
 		setTimeout(function() {
-			window.location = "{% url 'downloadapp:manage' %}"
+			<iframe width="1" height="1" frameborder="0" src="{% url 'downloadapp:uninstall_generator' {{ package }} %}"></iframe>
 		}, (1 * 1000));
 	</script>
 

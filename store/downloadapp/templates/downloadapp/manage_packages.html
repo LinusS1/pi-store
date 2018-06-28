@@ -1,10 +1,17 @@
 {% extends "downloadapp/base.html" %}
+{% load bootstrap3 %}
 
 {% block header %}
 	<h3>Manage</h3>
+	<script type="text/javascript">    
+		function wait(){
+		  setTimeout(function() {window.location.reload();}, (1 * 2000));
+		}
+	</script>
 {% endblock header %}
 
 {% block content %}
+	
 	<h4>Your packages:</h4>
 	{% for package in packages %}
 		<div class="row">
@@ -14,7 +21,10 @@
 					<div class="caption">
 					<h3>{{ package.name }}</h3>
 					<p>{{ package.simple_description }}</p>
-					<p><a href="{% url 'downloadapp:uninstall' package.id %}" class="btn btn-default" role="button">Uninstall</a> 
+					{% buttons %}
+						<a href="{% url 'downloadapp:uninstall'  package.id %}" download="" onclick="wait()" class="btn btn-default" role="button">Uninstall</a>
+						
+					{% endbuttons %}
 				</div>
 			</div>
 		</div>
