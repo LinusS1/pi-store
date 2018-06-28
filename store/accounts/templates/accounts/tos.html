@@ -1,0 +1,17 @@
+{% extends "downloadapp/base.html" %}
+
+{% block header %}
+		<h3>Terms of Service</h3>
+{% endblock header %}
+{% block content %}
+	<p>This is pretty simple:</p>
+	<p><b>Use the Pi Store as it is supposed to be used.</b></p>
+	<br>
+	<p>If you want it in a more official form:</p>
+	<ul>
+		<li>Use the Pi Store for Downloading, managing and sharing packages (or applications) from/with other people.</li>
+		<li>If you do not use the Pi Store for what it is intented for, your account may be terminated.</li>
+		<li>If you upload a(n) package/application, you are bound to the developer rules <a href="{% url 'dev:docs_r' %}">here.</a></li>
+		<li>We are not responsible for anything you download, upload or manage(meaning if you lose data becuase you accidently uninstalled something, it is not our falt.</li>
+	</ul>
+{% endblock content %}

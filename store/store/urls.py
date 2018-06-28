@@ -27,4 +27,6 @@ urlpatterns = [
     url(r'^markdownx/', include('markdownx.urls')),
     #accounts (all-auth) - accounts app doesn't need url
     url(r'^accounts/', include('allauth.urls')),
+    #Private/tos
+    url(r'^site/', include('accounts.urls'))
 	]
