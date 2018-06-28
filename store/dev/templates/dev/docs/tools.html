@@ -46,5 +46,15 @@
 		program: A directory where you program’s files live. This also includes the data that your application creates. The start.sh should call a script in this directory.
 	</article>
 	<br>
-	<p>More tools to be added in the future....</p>
+	<p><u>Downloading apt packages/getting root access:</u></p>
+	<p>If your package needs to install other packages so that it can work, you should use <b>pkexec</b></p>
+	<p>When you run <b>pkexec</b> a window will pop up asking the user to enter their password.</p>
+	<p>After the password is entered, the command will run as root.</p>
+	<p>Example:</p>
+	<div class="well well-sm">
+		pkexec apt-get install -y sl
+	</div>
+	<p><b>A few notes:</b></p>
+	<p>- Be sure to use the -y flag in apt-get, so that the script does not hang waiting for input.</p>
+	<p>- Use pkexec as little as possible. Every time you use pkexec, the user gets asked for a password.</p>
 {% endblock content %}
