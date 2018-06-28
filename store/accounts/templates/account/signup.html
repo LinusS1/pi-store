@@ -1,33 +1,31 @@
 {% extends "account/base.html" %}
 
+{% load bootstrap3 %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block header %}<h3>Register</h3>{% endblock header %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-<p>Do you have an account with Github? Sign in with Github below!</p>
 
 <div class="socialaccount_ballot">
-
+  <p>Register with:</p>
   <ul class="socialaccount_providers">
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
   </ul>
 
-  <div class="login-or">{% trans 'or' %}</div>
-
 </div>
 
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}" class="form">
   {% csrf_token %}
-  {{ form.as_p }}
+  {% bootstrap_form form %}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  {% buttons %}
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+  {% endbuttons %}
 </form>
 
 {% endblock %}

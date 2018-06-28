@@ -1,13 +1,14 @@
-{% extends "account/base.html" %}
+{% extends "downloadapp/base.html" %}
 
 {% load i18n %}
 {% load account %}
 
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+{% block header %}
+	<h3>Confrim your Email Address</h3>
+{% endblock header %}
 
 
 {% block content %}
-<h1>{% trans "Confirm E-mail Address" %}</h1>
 
 {% if confirmation %}
 
