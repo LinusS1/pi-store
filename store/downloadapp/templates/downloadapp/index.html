@@ -21,8 +21,15 @@
 
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
+					<div class="item active">
+							<img src="https://file.ac/FUt50I5XH8U/{{ package1.shot }}" alt="{{ package1.name }} screen shot">
+							<div class="carousel-caption">
+								<h3 style="color:black;">{{ package1.name }}</h3>
+								<p style="color:black;">{{ package1.simple_description }}</p>
+							</div>
+						</div>
 					{% for package in packages %}
-						<div class="item active">
+						<div class="item">
 							<img src="https://file.ac/FUt50I5XH8U/{{ package.shot }}" alt="{{ package.name }} screen shot">
 							<div class="carousel-caption">
 								<h3 style="color:black;">{{ package.name }}</h3>

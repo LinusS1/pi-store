@@ -26,9 +26,10 @@ def index(request):
 	else:
 		user_joined = True
 	
-	packages = Package.objects.order_by("date_changed").filter(stage='LIV')[:5]
+	package1 = Package.objects.order_by("date_changed").filter(stage='LIV').first()
+	packages = Package.objects.order_by("date_changed").filter(stage='LIV')[1:5]
 	
-	context = {'user_joined':user_joined, 'packages':packages}
+	context = {'user_joined':user_joined, 'packages':packages, 'package1':package1}
 	return render(request, 'downloadapp/index.html', context)
 
 def welcome(request):
