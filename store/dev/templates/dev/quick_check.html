@@ -1,10 +1,13 @@
 {% extends "downloadapp/base.html" %}
 
-{% block content %}
+{% block header %}
 	<h3>Package quick check:</h3>
 	
-	<p>Please read to self check your package.</p>
-	<br>
+	<small>Please read to self check your package.</small>
+{% endblock header %}
+
+{% block content %}
+	
 	<li>The screen shot must be <b>400x208</b></li>
 	<br>
 	<input type="checkbox">The package is suitable for all ages.</input>
@@ -38,6 +41,6 @@
 	If the application is in the apt repositories DO NOT upload the whole package to the Pi Store. Instead, in your INSTALL.sh file have apt install it. Be sure to uninstall it in UNINSTALL.sh</input>
 	<br>
 	<br>
-	<p>If the package meets the self check, click upload package.</p>
-	<a href="{% url 'dev:new_package' %}">Upload Package</a>
+	<p>If the package meets the self check, click continue to upload.</p>
+	<a href="{% url 'dev:new_package' %}" class="btn btn-primary" role="button">Continue to Upload</a>
 {% endblock content %}

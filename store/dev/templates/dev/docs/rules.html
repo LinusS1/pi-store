@@ -1,14 +1,15 @@
 {% extends "downloadapp/base.html" %}
 
-{% block content %}
+{% block header %}
 	<h3>Rules for Packages:</h3>
 	<p style="color: red">Please read. If you do not abide by these rules, your package with be rejected.</p>
-	<br>
-	<p>Here we go...</p>
 	<p>***These rules can change at any time.***</p>
-	<p>The reviewer of your application can reject packages as they see fit.</p>
-	<p>Exeptions will be made for educational packages.</p>
+	<p>Exeptions may be made for educational packages.</p>
 	<p>Existing applictions will then have 2 weeks to comply with the new rules unless the changes are to the collection of information section (see section for more details).</p>
+{% endblock header %}
+
+{% block content %}
+	
 	<ul>
 		<li style="color:red"><b>Must be suitable for all ages.</b></li>
 		<li>Must not infringe intellectual property rights (copyright, trademark, and publicity rights) of a third party.</li>

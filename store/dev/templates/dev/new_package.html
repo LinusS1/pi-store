@@ -1,14 +1,18 @@
 {% extends "downloadapp/base.html" %}
 
-{% block content %}
-	<h3>Add a new package:</h3>
+{% block header %}
+	<h3>Upload a new Package:</h3>
 	<p>A few notes:</p>
 	<li>The screen shot must be <b>400x208</b></li>
+	<li>You can't upload in the Pi Store application. Please go to pistore.pythonanywhere.com/ to upload to the Pi Store.</li>
 	<li>Please remember that if there is an apt package that Raspberry Pi users can download, just have an install script that installs the apt packaage.</li>
+{% endblock header %}
+
+{% block content %}
 	<form action="{% url 'dev:new_package' %}" method='post' enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<button name='submit'>Continue</button>
+		<button name='submit' class="btn btn-primary" role="button">Continue</button>
 	</form>
-	{{ form.media }}
+	
 {% endblock content %}

@@ -1,48 +1,72 @@
 {% extends "downloadapp/base.html" %}
 
+{% block header %}
+	<h3>Developer Portal:</h3>
+	<small>Upload your packages that you want to share!</small>
+{% endblock header %}
+
 {% block content %}
-	<h2>Developer Portal:</h2>
-	<div id="col" style="column-count: 3">
-		<h4>Documentation:</h4>
-		<p>Learn Rules and Tools for submiting your package.</p>
-		<a href="{% url 'dev:docs_r' %}">Rules</a> | <a href="{% url 'dev:docs_t' %}">Tools</a>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+		<h4 class="panel-title">Documentation</h4>
 		
-		<h4>Manage your packages:</h4>
-		<style>
-			table {
-				font-family: arial, sans-serif;
-				border-collapse: collapse;
-				width: 100%;
-			}
+	  </div>
+	  <div class="panel-body">
+		  <p>Learn Rules and Tools for submiting your package.</p>
+		<a href="{% url 'dev:docs_t' %}" class="btn btn-primary" role="button">Tools</a> <a href="{% url 'dev:docs_r' %}" class="btn btn-default" role="button">Rules</a>
+	  </div>
+	</div>
+	
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
 
-			td, th {
-				border: 1px solid #dddddd;
-				text-align: left;
-				padding: 8px;
-			}
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
 
-			tr:nth-child(even) {
-				background-color: #dddddd;
-			}
-		</style>
-		<table>
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+	<div class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading"><h4 class="panel-title">Your Uploaded Packages:</h4></div>
+	  
+	  {% if packages %}
+		  <!-- Table -->
+		  <table class="table">
 			<tr>
-				<th>Name</th>
-				<th>Stage</th>
-				<th>Message (If any)</th>
-			 </tr>
-			{% for package in packages %}
-				<tr>
-					<td>{{ package.name }}</td>
-					<td>{{ package.get_stage_display }}</td>
-					<td>{{ package.message }}</td>
-				</tr>
-			{% empty %}
-				<p>Go make a package!</p>
-			{% endfor %}
-		</table>
-		
-		<h4>Create a package!</h4>
-		<a href="{% url 'dev:quick_check' %}">Create a new package ---></a>
+					<th>Name</th>
+					<th>Stage</th>
+					<th>Message (If any)</th>
+				 </tr>
+				{% for package in packages %}
+					<tr>
+						<td>{{ package.name }}</td>
+						<td>{{ package.get_stage_display }}</td>
+						<td>{{ package.message }}</td>
+					</tr>
+				{% empty %}
+					<p>You havn't created any packages! Go make one!</p>
+				{% endfor %}
+		  </table>
+		</div>
+	{% else %}
+		<div class="panel-body"><p>You havn't created any packages! Go make one!</p></div>
+	{% endif %}
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4 class="panel-title">Upload a Package</h4></div>
+		<div class="panel-body">
+			<p>Upload your own package for people to see.</p>
+			<a href="{% url 'dev:quick_check' %}" class="btn btn-primary" role="button">Upload a Package</a>
+		</div>
 	</div>
 {% endblock content %}
